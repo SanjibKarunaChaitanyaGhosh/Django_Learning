@@ -175,3 +175,19 @@ Link a CSS file:
 ## Next Topics
 
 
+creating APP
+python manage.py startapp
+
+after that we should aware main project that we have a new App please know that
+
+setting.py in Introduction folder
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "FirstAPP"
+]
