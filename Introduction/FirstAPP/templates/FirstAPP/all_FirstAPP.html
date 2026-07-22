@@ -2,5 +2,27 @@
 
 {% block Title %} FirstAPP {% endblock %}
 {% block content %}
+
     <h1>Welcome to the FirstAPP | Home Page </h1>
+<div class='grid grid-cols-3 gap-4 m-4'>
+
+        {% for chai in chais %}
+        <div class="bg-amber-400 rounded-3xl p-4 text-center">
+            <img src="{{chai.image.url}}" alt="" 
+                class="border-2 border-amber-400 rounded-3xl overflow-hidden w-100 h-80">
+            <h3 class="text-center text-2xl font-bold">{{chai.name}}</h3>
+            <a href="">
+                <button class="bg-amber-50 border-2 border-amber-900 rounded text-sm px-4" >
+                    {{chai.type}}-{{chai.id}}
+                </button>
+            </a>
+        </div>
+
+        {% endfor %}
+
+        
+</div>
 {% endblock %}
+
+
+

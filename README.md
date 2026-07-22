@@ -174,8 +174,6 @@ Link a CSS file:
 ---
 
 ## Next Topics
-
-
 creating APP
 python manage.py startapp
 
@@ -194,7 +192,7 @@ INSTALLED_APPS = [
 ]
 
 
-Tailwindcss Integration in django
+## Tailwindcss Integration in django
 https://pypi.org/project/django-tailwind/
 
 uv pip install django-tailwind
@@ -295,3 +293,73 @@ urlpatterns = [
 ## restart both
 python manage.py runserver 8002
 python manage.py tailwind start
+
+
+## Admin Panel
+
+python manage.py migrate
+http://127.0.0.1:8002/admin/login/?next=/admin/
+
+## Create Super User
+python manage.py createsuperuser
+give id name 
+and password
+can ignore emailid
+
+## forgot Password
+python manage.py changepassword admin
+(Note: Replace admin with your specific superuser username if it is different).
+
+python -m pip install Pillow
+
+# settings.py(main project)
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+# urls.py(main project)
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    ----------------------------
+    ----------------------------
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+## migration 
+python manage.py makemigrations FirstAPP
+
+python manage.py migrate
+
+
+## Models.py
+from django.contrib import admin
+from .models import ChaiVarity
+
+## Register your models here.
+admin.site.register(ChaiVarity)
+
+## Models.py
+    def __str__(self):
+        return self.get_type_display()
+
+Whenever a field has a choices= argument, Django automatically creates a method named:
+
+get_FiledName_display()
+
+So in your case:
+
+self.get_type_display()
+
+## views.py
+
+from django.shortcuts import render
+from .models import ChaiVarity
+
+# Create your views here.
+def all_FirstAPP(request):
+    chais = ChaiVarity.objects.all()
+    return render(request,'FirstAPP/all_FirstAPP.html',{'chais':chais})
+
+
+## WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
