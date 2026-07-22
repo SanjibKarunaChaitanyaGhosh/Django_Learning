@@ -21,6 +21,7 @@ from . import views
 # localhost:8001/FirstAPP
 
 urlpatterns = [
-    path('',views.all_FirstAPP, name='all_FirstAPP')
-    # path('order/',views.order, name='order')
+    path('',views.all_FirstAPP, name='all_FirstAPP'),
+    path('<int:chai_id>/',views.chai_details, name='chai_details'),
+    path('chai_stores/',views.chai_store_view, name='chai_stores')
 ]

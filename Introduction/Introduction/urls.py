@@ -27,6 +27,8 @@ urlpatterns = [
     path('about/',views.about, name="About"),
     path('contact/',views.contact, name='Contact'),
     path('FirstAPP/',include('FirstAPP.urls')),
+    
 
     path("__reload__/", include("django_browser_reload.urls"))
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

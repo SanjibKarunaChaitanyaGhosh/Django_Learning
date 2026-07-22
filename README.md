@@ -360,6 +360,29 @@ def all_FirstAPP(request):
     chais = ChaiVarity.objects.all()
     return render(request,'FirstAPP/all_FirstAPP.html',{'chais':chais})
 
+## models.py
+class ChaiVarity(models.Model):
+   ------------------------------------------------
+   ------------------------------------------------
+    description = models.TextField(default='')
+
+## next operation 
+python manage.py makemigrations FirstAPP
+
+## to show those changes within DATABASE
+python manage.py migrate
+
+## Relationship Model
+One to many Relationship
+many to many Relationship
+One to One Relationship
+
+## migration 
+python manage.py makemigrations FirstAPP
+python manage.py migrate
+
+## Form in Django
+
 
 ## WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
 For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
