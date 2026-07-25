@@ -62,7 +62,7 @@ django-admin startproject Project_Name(as you wish)
 Navigate into the project:
 
 ```bash
-cd Introduction
+cd Project_Name
 ```
 
 Run the development server:
