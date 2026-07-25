@@ -235,3 +235,167 @@ HttpResponse("Hello, World. You are at Chai website")
 URL → View → Template → Response
 ```
 
+## 1. What are Templates?
+
+A template is an HTML file that Django uses to generate web pages.
+
+Instead of sending plain text like:
+```bash
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello World")
+```
+### Django can send an HTML page:
+```bash
+Browser
+   ↑
+   |
+Django View
+   |
+Template (home.html)
+```
+
+### Example
+```bash
+# views.py
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, "home.html")
+```
+### When someone vists our website
+
+```bash
+Request
+   ↓
+views.py
+   ↓
+home.html (Template)
+   ↓
+Browser shows the webpage
+```
+
+### 2. What is the Static Folder?
+
+The static folder stores files that don't change when the page is requested.
+These files are called static files because Django serves them as-is.
+
+# Example Project Structure
+
+
+MyProject/
+
+│
+|__ MyProject/
+|
+├── templates/
+│      home.html
+│      about.html
+│
+├── static/
+│      css/
+│          style.css
+│
+│      images/
+│          logo.png
+│
+│      js/
+│          app.js
+│
+├── views.py
+├── urls.py
+└── settings.py
+
+### 1. TEMPLATES setting in settings.py
+
+```bash
+TEMPLATES = [
+    {
+        "DIRS": ['templates'],
+    }
+]
+```
+
+# What is "DIRS"?
+
+DIRS tells Django where to look for HTML template files.
+
+## This imports Django's helper function called render().
+
+```bash
+from django.shortcuts import render
+```
+
+```bash
+render(request, template_name, context)
+```
+
+request → the user's HTTP request
+template_name → HTML file to display
+context → data to send to the template (optional)
+
+
+    Browser
+        │
+        ▼
+    urls.py
+        │
+        ▼
+    home(request)
+        │
+        ▼
+    render(request, "index.html")
+        │
+        ▼
+    templates/index.html
+        │
+        ▼
+    HTML sent back to browser
+
+### load
+## index.html
+```bash
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+```
+# settings.py
+``` bash
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+```
+
+or (recommended in modern Django):
+
+```bash
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+```
+
+
+
+
+
+## Installing Django
+
+https://pypi.org/project/django-tailwind/
+
+```bash
+pip install django-tailwind
+```
+## hot-reload
+uv pip install "django-tailwind[reload]"
+
+## Django template that loads a CSS file from the static folder.
