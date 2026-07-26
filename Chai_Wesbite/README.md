@@ -362,7 +362,10 @@ context → data to send to the template (optional)
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 ```
 # settings.py
-``` bash
+```bash
+import os
+```
+```bash
 STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
@@ -383,12 +386,63 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 ```
+# Django template that loads a CSS file from the static folder.
 
 
+## Key Concepts Learned
+
+* Modern Python package management using **uv**
+* Virtual environment creation
+* Django project setup
+* Running the development server
+* Django template rendering
+* Static file management
+* Linux networking commands for debugging
+* Understanding the difference between **Templates** and **Static Files**
 
 
+## Django Documentation
+https://docs.djangoproject.com/en/6.0/topics/templates/
 
-## Installing Django
+## Django Templates
+https://docs.djangoproject.com/en/6.0/topics/templates/
+
+## How to make an APP within Django ?
+* 1. have to check manage.py is there or not after "ls" command
+* 2. python manage.py startapp <app name>
+* 3. you have to aware your main project about new app
+```bash
+INSTALLED_APPS = [
+    "chai",
+]
+```
+* 4. now your app is properly installed
+* 5. within newAPP I create templates/chai/all_chai.html
+* 6. for suggestion follow point 7
+* 7. ctrl+ ---> type emmet --> include langage --> item ==> django-html and value ==> html
+* 8. make an urls.py file within app and copy all from main urls.py
+* 9. transfer control of the new urls.py to the main urls.py
+```bash
+from django.urls import path, include
+urlpatterns = [
+    path('chai/',include('chai.urls')),
+]
+```
+* 10. within main templates creat a file layout.html
+```bash
+<body>
+    type block_unnamed and press enter
+    this block can easily overwrite
+    {% block  content%}{% endblock %}
+</body>
+```
+
+### layout
+* this is default template, we write it only once
+* no need of any predefine temple in html which given by default, so delete that
+* {% extends "layout.html" %} within index.html
+
+## Installing TailwindCSS
 
 https://pypi.org/project/django-tailwind/
 
@@ -396,6 +450,7 @@ https://pypi.org/project/django-tailwind/
 pip install django-tailwind
 ```
 ## hot-reload
+```bash
 uv pip install "django-tailwind[reload]"
+```
 
-## Django template that loads a CSS file from the static folder.
