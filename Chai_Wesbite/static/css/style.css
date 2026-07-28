@@ -1,10 +1,18 @@
-*{
+/* *{
     padding:0px;
     margin: 0px;
     box-sizing: border-box;
 }
+html,body{
+    width: 100%;
+    height: 100%;
+}
 body{
+    margin: 0;
+    min-height: 100vh;
     background: linear-gradient(135deg,#4fc500 0% , #9bf8f3 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .glass-effect{
@@ -15,4 +23,266 @@ body{
 
 .card-shadow{
     box-shadow: 0px 5px 10px 5px black;
+} */
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#fdf6ec,#f7e3c6);
+    color:#3f2a1d;
+}
+/* Navbar */
+
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    position:sticky;
+    top:0;
+
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    z-index:1000;
+}
+
+.logo a{
+    text-decoration:none;
+    font-size:1.8rem;
+    font-weight:700;
+    color:#6b3e26;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#4b2e1d;
+    font-size:1rem;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+    height:2px;
+
+    background:#8b4513;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#8b4513;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.order-btn{
+    text-decoration:none;
+    color:white;
+    background:#8b4513;
+
+    padding:12px 28px;
+    border-radius:40px;
+
+    transition:.3s;
+    font-weight:600;
+}
+
+.order-btn:hover{
+    background:#6d3410;
+    transform:translateY(-2px);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:18px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+}
+
+/* Hero Section */
+
+.hero{
+    max-width:1200px;
+    margin:auto;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:60px;
+    padding:80px 40px;
+}
+
+.hero-content{
+    flex:1;
+}
+
+.hero-content h1{
+    font-size:3.8rem;
+    margin-bottom:20px;
+    color:#5b3716;
+}
+
+.hero-content p{
+    font-size:1.1rem;
+    color:#555;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#8b4513;
+    color:white;
+    padding:15px 35px;
+    border-radius:50px;
+    transition:.3s;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#6b3007;
+    transform:translateY(-3px);
+}
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:450px;
+    max-width:100%;
+}
+
+/* Featured */
+
+.featured{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 40px;
+}
+
+.featured h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#5b3716;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:20px 20px 10px;
+    color:#5b3716;
+}
+
+.card p{
+    padding:0 20px 25px;
+    color:#666;
+}
+
+/* About */
+
+.about{
+    max-width:900px;
+    margin:auto;
+    padding:80px 30px;
+    text-align:center;
+}
+
+.about h2{
+    font-size:2.5rem;
+    margin-bottom:20px;
+    color:#5b3716;
+}
+
+.about p{
+    line-height:1.8;
+    color:#555;
+    font-size:1.1rem;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column-reverse;
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:2.8rem;
+}
+
+.hero-image img{
+    width:320px;
+}
+
 }

@@ -38,7 +38,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "chai",
+    "tailwind",
+    "theme",
+    "django_browser_reload",
 ]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS=['192.168.0.9']
+
+# NPM_BIN_PATH='/home/sanjib/.nvm/versions/node/v22.21.0/bin/npm'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -48,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "Chai_Wesbite.urls"

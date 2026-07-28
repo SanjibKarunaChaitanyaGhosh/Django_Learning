@@ -219,12 +219,6 @@ or,
 python -m pip install --upgrade pip
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
     "FirstAPP",
     "tailwind"
 ]
@@ -237,12 +231,6 @@ Choose template:
 Enter choice [1-3]: 1
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
     "FirstAPP",
     "tailwind",
     "theme"

@@ -441,16 +441,174 @@ urlpatterns = [
 * this is default template, we write it only once
 * no need of any predefine temple in html which given by default, so delete that
 * {% extends "layout.html" %} within index.html
+* we can also extends this within APP
 
 ## Installing TailwindCSS
 
 https://pypi.org/project/django-tailwind/
 
 ```bash
-pip install django-tailwind
+uv pip install django-tailwind
 ```
 ## hot-reload
 ```bash
 uv pip install "django-tailwind[reload]"
 ```
 
+## if output look like this "Audited 1 package in 2ms" then install pip
+
+* https://pip.pypa.io/en/stable/installation/
+
+```bash
+https://pip.pypa.io/en/stable/installation/
+```
+
+```bash
+python -m ensurepip --upgrade
+```
+* or,
+```bash
+python -m pip install --upgrade
+
+```
+## hot-reload using pip
+```bash
+pip install "django-tailwind[reload]"
+```
+
+## upgrade pip if needed
+```bash
+python -m pip install --upgrade pip
+```
+
+## Verify your installation
+```bash
+python --version
+python -m pip --version
+which python
+which pip
+```
+
+# go to the main app, within main project settings.py
+```bash
+INSTALLED_APPS = [
+    "chai",
+    "tailwind",
+]
+```
+
+# go to mian Project and ls if you can see manage.py
+```bash
+python manage.py tailwind init
+```
+
+Enter Tailwind app name [theme]: 
+Choose template:
+1 - Tailwind v4 Standalone - Simple and doesn't require Node.js
+2 - Tailwind v4 Full - All the bells and whistles, requires Node.js
+3 - Tailwind v3 Full - Legacy template for Tailwind v3 projects, requires Node.js
+Enter choice [1-3]: 1
+
+# go to the main app, within main project settings.py
+```bash
+INSTALLED_APPS = [
+    "chai",
+    "tailwind",
+    'theme',
+]
+```
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS=['']
+
+## to find Internal IP you can use the below command
+```bash
+hostname -I
+``` 
+or, 
+
+```bash
+ip route get 1.1.1.1
+```
+192.168.x.x → Your local (internal) IP on your Wi-Fi or Ethernet network.
+
+## now we have to INSTALL tailwind using manage.py
+```bash
+python manage.py tailwind install
+```
+## added these two lines in layout.html
+```bash
+{% load static tailwind_tags %}
+{% tailwind_css %}
+ ```
+
+# In the give position as mentioned below
+
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Special Chai{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     {% tailwind_css %}
+</head>
+
+
+## tailwind still not connected although you can write tailwind in layout.html
+* first you have to go the new terminal, go to the your project then run the below comment
+```bash
+ python manage.py tailwind start
+ ```
+
+ ## if you install tailwind using node.js, you have to add this within settings.py
+
+```bash
+which npm
+```
+
+ ```bash
+ NPM_BIN_PATH='/home/sanjib/.nvm/versions/node/v22.21.0/bin/npm'
+ ```
+
+ ## for windows user 
+ ```bash
+ NPM_BIN_PATH=r"C:\Program File\etc\etc"
+ ```
+
+ ## in settings.py for relaod tailwind automatically
+ ```bash
+ INSTALLED_APPS = [
+    ------------------------------
+    ------------------------------
+    "django_browser_reload"
+]
+```
+# and
+
+```bash
+MIDDLEWARE = [
+    ----------------------------------------------------------
+    -------------------------------------------------------------
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+]
+```
+# and go to the urls.py
+```bash
+urlpatterns = [
+    ---------------------------------------
+    ----------------------------------------------
+
+    path("__reload__/",include("django_browser_reload.urls"))
+]
+```
+
+## RESTART YOU SERVER
+
+
+# ADMIN panel stated here

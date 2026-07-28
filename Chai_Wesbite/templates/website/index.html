@@ -1,4 +1,69 @@
 {% extends "layout.html" %}
+{% load static %}
 
-{% block title%}Home Page{% endblock %}
-{% block Content%}Welcome to Home page{% endblock %}
+{% block title %}
+Special Chai
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Every Sip Tells a Story ☕</h1>
+
+        <p>
+            Experience the perfect blend of aroma, warmth, and happiness
+            in every cup of our handcrafted chai.
+        </p>
+
+        <a href="#" class="btn">Explore Our Chai</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="{% static 'images/chai.png' %}" alt="Cup of Chai">
+    </div>
+</section>
+
+<!-- Featured Chai -->
+<section class="featured">
+
+    <h2>Our Special Chai</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <img src="{% static 'images/masala.png' %}" alt="">
+            <h3>Masala Chai</h3>
+            <p>Rich spices with authentic Indian flavor.</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/green.png' %}" alt="">
+            <h3>Green Tea</h3>
+            <p>Fresh, healthy and refreshing.</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/lemon.png' %}" alt="">
+            <h3>Lemon Tea</h3>
+            <p>Refreshing citrus taste with natural goodness.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- About -->
+<section class="about">
+
+    <h2>Why Choose Us?</h2>
+
+    <p>
+        We use premium tea leaves, fresh ingredients,
+        and traditional recipes to bring you the perfect cup of chai.
+    </p>
+
+</section>
+
+{% endblock %}

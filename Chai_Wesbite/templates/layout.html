@@ -1,4 +1,4 @@
-{% comment %} type load {% endcomment %}
+{% load static tailwind_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {% block title%}Default value{% endblock %}
+        {% block title %}Special Chai{% endblock %}
     </title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     {% tailwind_css %}
 </head>
 <body>
-    {% comment %} type block_unnamed {% endcomment %}
-    {% block Content%}{% endblock %}
+
+    <!-- Navbar -->
+ 
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="text-center">© 2026 Special Chai | Made with ❤️ using Django</p>
+    </footer>
+
 </body>
 </html>
