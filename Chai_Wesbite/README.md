@@ -609,6 +609,86 @@ urlpatterns = [
 ```
 
 ## RESTART YOU SERVER
+```bash
+python manage.py runserver 8001
+python manage.py tailwind start
+```
 
+### ADMIN panel stated here
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
 
-# ADMIN panel stated here
+```bash
+python manage.py migrate
+```
+# restart server again, no error
+you can go to the admin page
+
+```bash
+http://127.0.0.1:8001/admin/login/?next=/admin/
+```
+
+# Create Super User
+```bash
+python manage.py createsuperuser
+```
+
+## reset django admin password
+
+```bash
+python manage.py changepassword <your_username>
+```
+
+## go to the APP/modles.py
+```bash
+from django.db import models
+from django.utils import timezone
+
+# Create your models here.
+class ChaiVarity(models.Model):
+    CHAI_TYPE_CHOICE = [
+        ('ML','MASALA'),
+        ('GR','GINGER'),
+        ('KI','KIWI'),
+        ('KL','PLAIN'),
+        ('EL','ELAICHI'),
+    ]
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='chais/')
+    date_added = models.DateTimeField(default=timezone.now)
+    type = models.CharField(max_length=3, choices=CHAI_TYPE_CHOICE)
+```
+
+## settings.py
+```bash
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+```
+
+## URLS.PY in main project
+
+```bash
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [-----
+                    ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+```
+
+# Django don't know that you have create the model
+## you have to do migration for that
+```bash
+python manage.py makemigrations APP_NAME
+```
+```bash
+ python manage.py migrate
+ ```
+
+ ## admin.py within APP
+ ```bash
+ from django.contrib import admin
+from .models import ChaiVarity
+
+# Register your models here.
+admin.site.register(ChaiVarity)
+```
