@@ -657,6 +657,9 @@ class ChaiVarity(models.Model):
     image = models.ImageField(upload_to='chais/')
     date_added = models.DateTimeField(default=timezone.now)
     type = models.CharField(max_length=3, choices=CHAI_TYPE_CHOICE)
+
+    def __str__(self): # it effects the name iwqithin admin panel
+        return self.name
 ```
 
 ## settings.py
@@ -692,3 +695,17 @@ from .models import ChaiVarity
 # Register your models here.
 admin.site.register(ChaiVarity)
 ```
+
+## now add tea within database with images
+
+## APP/views.py
+```bash
+
+from .models import ChaiVarity
+
+# Create your views here.
+def all_chai(request):
+    chais = ChaiVarity.objects.all()
+    return render(request,'chai/all_chai.html',{'chais':chais})
+```
+## 

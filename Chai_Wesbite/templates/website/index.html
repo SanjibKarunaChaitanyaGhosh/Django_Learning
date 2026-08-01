@@ -5,9 +5,30 @@
 Special Chai
 {% endblock %}
 
-{% block content %}
+{% comment %} Navbar {% endcomment %}
+
+{% block navbar %}
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="/">☕ Special Chai</a>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Our Chai</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <a href="#" class="order-btn">Order Now</a>
+</nav>
+
+{% endblock  %}
 
 <!-- Hero Section -->
+{% block content %}
 <section class="hero">
     <div class="hero-content">
         <h1>Every Sip Tells a Story ☕</h1>
