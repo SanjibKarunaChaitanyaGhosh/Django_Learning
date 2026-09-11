@@ -304,7 +304,7 @@ MyProject/
 │      js/
 │          app.js
 │
-├── views.py
+├── views.pSpecialy
 ├── urls.py
 └── settings.py
 
@@ -316,7 +316,7 @@ TEMPLATES = [
         "DIRS": ['templates'],
     }
 ]
-```
+```Special
 
 # What is "DIRS"?
 
@@ -615,6 +615,7 @@ python manage.py tailwind start
 ```
 
 ### ADMIN panel stated here
+
 You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
 Run 'python manage.py migrate' to apply them.
 
@@ -643,14 +644,16 @@ python manage.py changepassword <your_username>
 ```bash
 from django.db import models
 from django.utils import timezone
+```
 
 # Create your models here.
+```bash
 class ChaiVarity(models.Model):
     CHAI_TYPE_CHOICE = [
         ('ML','MASALA'),
         ('GR','GINGER'),
         ('KI','KIWI'),
-        ('KL','PLAIN'),
+        ('PL','PLAIN'),
         ('EL','ELAICHI'),
     ]
     name = models.CharField(max_length=100)
@@ -660,6 +663,10 @@ class ChaiVarity(models.Model):
 
     def __str__(self): # it effects the name iwqithin admin panel
         return self.name
+```
+
+```bash
+pip install Pillow
 ```
 
 ## settings.py
@@ -678,7 +685,7 @@ urlpatterns = [-----
                     ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 ```
 
-# Django don't know that you have create the model
+# Django don't know that you have create the model, SO -->
 ## you have to do migration for that
 ```bash
 python manage.py makemigrations APP_NAME
@@ -689,10 +696,12 @@ python manage.py makemigrations APP_NAME
 
  ## admin.py within APP
  ```bash
- from django.contrib import admin
+from django.contrib import admin
 from .models import ChaiVarity
+```
 
 # Register your models here.
+```bash
 admin.site.register(ChaiVarity)
 ```
 
@@ -700,10 +709,11 @@ admin.site.register(ChaiVarity)
 
 ## APP/views.py
 ```bash
-
 from .models import ChaiVarity
+```
 
 # Create your views here.
+```bash
 def all_chai(request):
     chais = ChaiVarity.objects.all()
     return render(request,'chai/all_chai.html',{'chais':chais})

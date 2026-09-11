@@ -5,24 +5,35 @@
 Special Chai
 {% endblock %}
 
+{% block navbar %}
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="/">☕ Special Chai</a>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Our Chai</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <a href="#" class="order-btn">Order Now</a>
+</nav>
+
+{% endblock  %}
+
+
 {% block content %}
+<h1>All Chai for you</h1>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Every Sip Tells a Story ☕</h1>
-
-        <p>
-            Experience the perfect blend of aroma, warmth, and happiness
-            in every cup of our handcrafted chai.
-        </p>
-
-        <a href="#" class="btn">Explore Our Chai</a>
+{% for chai in chais %}
+    <div class="chai-item">
+        <img src="{{chai.image.url}}" alt="">
     </div>
-
-    <div class="hero-image">
-        <img src="{% static 'images/chai.png' %}" alt="Cup of Chai">
-    </div>
-</section>
+{% endfor %}
 
 {% endblock %}
+
