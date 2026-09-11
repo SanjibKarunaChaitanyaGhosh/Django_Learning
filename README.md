@@ -3,6 +3,7 @@
 ## 🐍 Python Environment Setup with uv
 
 ### Install uv
+* https://docs.astral.sh/uv/
 
 ```bash
 pipx install uv
@@ -111,11 +112,23 @@ Find which process is using a specific port:
 sudo lsof -i :8080
 ```
 
----
+---------------------------------
 
+# views.py in Project-level
+```bash
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello Word..this is home page.....")
+```
+# urls.py
+```bash
+ path('contact/',views.contact, name='contact')
+```
+--------------------------------
 # Django Templates
 
-Create a `templates` directory.
+Create a `templates` folder in `ROOT` directory.
 
 Update `settings.py`:
 
@@ -127,9 +140,11 @@ TEMPLATES = [
 ]
 ```
 
-Render a template:
+## Render a template:
+* within views.py
 
-```python
+```bash
+from django.shortcuts import render 
 return render(request, "index.html")
 ```
 
